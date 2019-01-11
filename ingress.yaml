@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: parcel-svg-snapshot
+  namespace: fast-platform
+  labels:
+    platform: fast
+    module: core
+    domain: gis
+    api: parcel-svg
+    app: snapshot
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: api.fast.sobloo.io
+    http:
+      paths:
+      - backend:
+          serviceName: parcel-svg-snapshot
+          servicePort: http
+        path: /v1/fast/gis/parcel/snapshot/svg

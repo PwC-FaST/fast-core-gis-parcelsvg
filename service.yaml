@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: parcel-svg-snapshot
+  namespace: fast-platform
+  labels:
+    platform: fast
+    module: core
+    domain: gis
+    api: parcel-svg
+    app: snapshot
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    platform: fast
+    module: core
+    domain: gis
+    api: parcel-svg
+    app: snapshot
+  type: ClusterIP
